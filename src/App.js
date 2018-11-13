@@ -53,7 +53,7 @@ class App extends Component {
         console.log(this.props);
         return (
             <div className="App">
-                <AppBar position="static" color="default">
+                <AppBar position="sticky" color="default">
                     <Toolbar>
                         <Typography variant="h6" color="inherit">
                             Production Java™
@@ -77,9 +77,14 @@ class App extends Component {
                                     <Typography component="content" variant="content" gutterBottom>
                                         If you look closely, you'll see that on the left hand there needs to be some picture
                                     </Typography>
+                                    <Button variant="contained" color="secondary" className={classes.button}>
+                                        Pre-order
+                                    </Button>
+                                    <Typography component="caption" variant="caption">
+                                        You won't be charged without your agreement
+                                    </Typography>
                                 </Grid>
                             </Grid>
-
                         </Grid>
                     </Grid>
                     <Grid item xs={12} sm={6}>
