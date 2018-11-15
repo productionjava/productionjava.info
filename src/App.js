@@ -36,6 +36,12 @@ const styles = theme => ({
         marginLeft: -12,
         marginRight: 20,
     },
+    img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
+    },
     paper: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
@@ -149,8 +155,8 @@ class App extends Component {
                             egestas eros nec bibendum. Praesent accumsan augue elit, at convallis turpis semper
                             eu.</Paper>
                     </Grid>
-                    <Grid item xs={12} sm={6} alignItems={"center"} justify={"center"} alignContent={"center"} >
-                        <Paper className={classes.paper} style={{backgroundColor: '#d8d8d8', margin:'5vh'}}>
+                    <Grid item xs={12} sm={6} alignItems={"center"} justify={"center"} alignContent={"center"}>
+                        <Paper className={classes.paper} style={{backgroundColor: '#d8d8d8', margin: '5vh'}}>
                             <Typography component="h5" variant="h4" gutterBottom style={{marginTop: "1vh"}}>
                                 What you will learn from this book
                             </Typography>
@@ -174,6 +180,43 @@ class App extends Component {
                                 )}
                             </List>
                         </Paper>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <Grid container alignContent={"center"} justify={"center"}
+                              style={{height: '80vh', backgroundColor: 'gray'}}>
+                            <Parallax
+                                blur={10}
+                                strength={200}
+                                style={{height: '80vh', width: '100vw'}}
+                            >
+                                <Typography component="h3" variant="h2" gutterBottom
+                                            style={{marginTop: "5vh"}}>
+                                    Step by step approach
+                                </Typography>
+                                <Typography component="content" variant="content" gutterBottom style={{}}>
+                                    Instead of describing everything in one stream, this book takes step by step
+                                    approach with each episode
+                                </Typography>
+
+                                <Grid container spacing={24}>
+                                    {["Modules",
+                                        "Applications",
+                                        "Microservices",
+                                        "Additions"].map(item =>
+                                        <Grid item xs={6} sm={3}>
+                                            <Paper className={classes.paper}>
+                                                <img className={classes.img}
+                                                     src="https://images-na.ssl-images-amazon.com/images/I/81vZaXuCQ-L._SX385_.jpg"/>
+                                                <Typography component="content" variant="content" gutterBottom>
+                                                    {item}
+                                                </Typography>
+                                            </Paper>
+                                        </Grid>
+                                    )}
+                                </Grid>
+                            </Parallax>
+                        </Grid>
+
                     </Grid>
                     <Grid item xs={6} sm={3}>
                         <Paper className={classes.paper}>xs=6 sm=3</Paper>
