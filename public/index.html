@@ -5,6 +5,21 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAfl1c3TuDoXMBZVMnzcpY3QSu0XCITPgI",
+            authDomain: "poised-resource-205206.firebaseapp.com",
+            databaseURL: "https://poised-resource-205206.firebaseio.com",
+            projectId: "poised-resource-205206",
+            storageBucket: "poised-resource-205206.appspot.com",
+            messagingSenderId: "187632923716"
+        };
+        firebase.initializeApp(config);
+    </script>
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/

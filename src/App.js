@@ -22,6 +22,20 @@ import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 
+
+const db = window.firebase.database();
+
+
+// var blogpost = db.ref('blog/posts').push("test");
+// blogpost.set({
+//     date: Date(),
+//     title: "Website developed",
+//     content: [
+//         {us: "Finally website finished"},
+//         {de: "Endlich ist die Webseite fertig"}
+//     ],
+// });
+
 const store = createStore(RootReducer);
 
 
@@ -49,11 +63,22 @@ const styles = theme => ({
     },
 });
 
+
 class App extends Component {
+    state = {
+        blogposts: []
+    };
 
     componentDidMount() {
         const token = localStorage.getItem('token')
         const mail = localStorage.getItem('email')
+        console.log("db", db);
+        let app = this;
+        db.ref('blog/posts').on('value', function (snapshot) {
+            let blogposts = snapshot.val();
+            console.log("posts", blogposts)
+            app.setState({blogposts: [...Object.values(blogposts)]})
+        })
         if (token != null) {
             this.props.changeConfig({...this.props.config, token: token, email: mail});
         }
@@ -218,18 +243,15 @@ class App extends Component {
                         </Grid>
 
                     </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                    </Grid>
+                    {/*<Grid item xs={12} sm={12}>*/}
+                        {/*<Typography component="h3" variant="h2" gutterBottom>*/}
+                            {/*Updates*/}
+                        {/*</Typography>*/}
+                        {/*{this.state.blogposts.map(item =>*/}
+                            {/*<Paper style={{margin: '1vh'}}>{item.content[0].us}</Paper>*/}
+                        {/*)*/}
+                        {/*}*/}
+                    {/*</Grid>*/}
                 </Grid>
             </div>
         );
